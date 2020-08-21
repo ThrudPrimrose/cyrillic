@@ -7,12 +7,11 @@ use clap::{Arg,App};
 use std::fs;
 use std::path::Path;
 
-fn ends_with_mp3(s: &str) -> bool {
+fn ends_with(s: &str, typename: &str) -> bool {
     let size = s.len();
     let chars = s.get(size-3..size);
-    let mp3: &str = "mp3";
     match chars {
-        Some(s) => if s.eq(mp3) {
+        Some(s) => if s.eq(typename) {
             return true
         }else{
             return false
@@ -34,7 +33,7 @@ fn iterate_files(path : &str, fs: &FinalStates<'static>) {
                 let res = file.file_name().into_string();
                 match res {
                     Ok(s) => {
-                        if ends_with_mp3(&s) {
+                        if ends_with(&s,"mp3") {
                             //println!("{} is an mp3 file", s);
                             if fs.convertible(&s) {
                                 //println!("{} is in cyrillic", s);
