@@ -1,5 +1,5 @@
 # cyrillic
-Cyrillic -> Latin
+A tool I wrote to map the cyrillic file names to latin letters.
 
 Run the compiled program with:
 
